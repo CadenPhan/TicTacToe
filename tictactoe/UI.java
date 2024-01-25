@@ -1,4 +1,5 @@
-import java.util
+package tictactoe;
+import java.util.Scanner;
  /**
  * UI class
  */
