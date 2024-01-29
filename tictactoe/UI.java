@@ -1,6 +1,6 @@
 package tictactoe;
 import java.util.Scanner;
- /**
+/**
  * UI class
  */
 public class UI
@@ -11,8 +11,8 @@ public class UI
     public UI() {
         scanner = new Scanner(System.in);         
     }
-    
-      // Utility methods
+
+    // Utility methods
     public String getXOrO(int whoseMove) {
         return (whoseMove == -1) ? "X" : "O";
     }
@@ -21,7 +21,7 @@ public class UI
         return (whoseMove == -1) ? xName : oName;
     }
 
-    public boolean isLegalMove(int state, int row, int col) {
+    public boolean isLegalMove(State state, int row, int col) {
         return 1 <= row && row <= Constants.BOARD_SIZE &&
         1 <= col && col <= Constants.BOARD_SIZE &&
         state.getBoardCell(row, col) == Constants.BLANK;
@@ -50,7 +50,7 @@ public class UI
         int col;
         while (col <= 0 || col >= 4) {
             try {
-                System.out.printf(Constants.GET_COL_MOVE, getXOrO(whoseMove), getPlayerName(whoseMove, xName, oName));
+                System.out.printf(Constants.GET_COL_MOVE, getXOrO(whoseMove), getPlayerName(getWhoseMove, xName, oName));
                 col = scanner.nextInt();
             } catch (Exception e) {
                 System.out.println(Constants.INVALID_ROW_OR_COLUMN);
@@ -110,7 +110,7 @@ public class UI
     }
 
     public int getMoveCol(int whoseMove, String xName, String oName) {
-        int col;
+        int col = 0;
         while (col <= 0 || col >= 4) {
             try {
                 System.out.printf(Constants.GET_COL_MOVE, getXOrO(whoseMove), getPlayerName(whoseMove, xName, oName));
@@ -150,19 +150,27 @@ public class UI
     }
 
     public void printMove(State state, int row, int col) {
-        System.out.printf(Constants.PRINT_MOVE, getXOrO(state.getWhoseMove()), getPlayerName(state.getWhoseMove(), state.getXName(), state.getOName()), row, col);
+        System.out.printf(
+            Constants.PRINT_MOVE,
+            getXOrO(state.getWhoseMove()),
+            getPlayerName(state.getWhoseMove(), state.getXName(), state.getOName()),
+            row,
+            col
+        );
     } 
 
     public void printWinner(State state) {
-        System.out.printf(Constants.WINNER, getXOrO(state.getWhoseMove()), getPlayerName(state.getWhoseMove(), state.getXName(), state.getOName()));
+        System.out.printf(
+            Constants.WINNER,
+            getXOrO(state.getWhoseMove()),
+            getPlayerName(state.getWhoseMove, state.getXName(), state.getOName())
+        );
     }
 
     public void printTieGame() {
         System.out.println(Constants.TIE_GAME);
     }
 }
-
-
 
 
 
