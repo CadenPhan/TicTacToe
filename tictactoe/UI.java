@@ -7,7 +7,7 @@ public class UI
 {
 
     Scanner scanner;
-
+    State state = new State();
     public UI() {
         scanner = new Scanner(System.in);         
     }
@@ -50,7 +50,7 @@ public class UI
         int col;
         while (col <= 0 || col >= 4) {
             try {
-                System.out.printf(Constants.GET_COL_MOVE, getXOrO(whoseMove), getPlayerName(getWhoseMove, xName, oName));
+                System.out.printf(Constants.GET_COL_MOVE, getXOrO(whoseMove), getPlayerName(whoseMove, xName, oName));
                 col = scanner.nextInt();
             } catch (Exception e) {
                 System.out.println(Constants.INVALID_ROW_OR_COLUMN);
@@ -63,6 +63,12 @@ public class UI
         System.out.println(Constants.START_NEW_GAME);
         String yesOrNo = scanner.next();
         return yesOrNo == "T";
+        if (yes0rNo.equalsIgnoreCase("Y")) {
+            state.reset();
+            return true;
+        } else{
+            return false;
+        }
     }
 
     // Printing text methods
