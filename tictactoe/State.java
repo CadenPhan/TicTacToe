@@ -35,6 +35,7 @@ public class State
         for(int row = 0; row < Constants.BOARD_SIZE; row++) {
             for (int col = 0; col < Constants.BOARD_SIZE; col++) {
                 if (getBoardCell(row, col) == Constants.BLANK) {
+                    return false;
                 }
             }
         }
@@ -77,7 +78,7 @@ public class State
         return this.board[row][col];
     }
 
-    public void setboardCell(int row, int col, int value) {
+    public void setBoardCell(int row, int col, int value) {
         this.board[row][col] = value;
     }
 }
