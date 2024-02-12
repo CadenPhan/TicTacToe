@@ -44,7 +44,7 @@ public class EventLoop {
 
             } else if (gameState == Constants.MAKE_MOVE) {
                 ui.printMove(state, row, col);
-                state.setBoardCell(row, col,state.getWhoseMove());
+                state.setBoardCell(row -1, col -1,state.getWhoseMove());
                 state.setGameState(Constants.CHECK_IF_WINNER);
 
             } else if (gameState == Constants.CHECK_IF_WINNER) {
